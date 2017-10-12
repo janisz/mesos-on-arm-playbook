@@ -1,0 +1,33 @@
+---
+- hosts: armservers
+  remote_user: root
+  tasks:
+    - name: Update repositories
+      apt:
+        update_cache: yes
+    - name: Install a few utility tools.
+      apt: name={{item}}
+      with_items:
+           - tar
+           - wget
+           - git
+           - htop
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+
+    # https://reference.apache.org/committer/node-hosting
+    - name: Create a jenkins group
+      group:
+        name: jenkins
+    - name: Create a jenkins user
+      user:
+        name: jenkins
+        group: jenkins
+    - name: Add in the jenkins ssh public key into the users ~/.ssh/authorized keys
+      authorized_key:
+        user: jenkins
+        key: https://raw.githubusercontent.com/apache/infrastructure-puppet/deployment/modules/build_slaves/files/jenkins.pub
