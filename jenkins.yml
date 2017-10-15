@@ -81,6 +81,14 @@
     - name: Create a developers group
       group:
         name: dev
+    - name: Create a user
+      user:
+        name: janisz
+        group: dev
+    - name: Add public key for the user
+      authorized_key:
+        user: janisz
+        key: https://github.com/janisz.keys
 
   handlers:
     - name: restart ntp
