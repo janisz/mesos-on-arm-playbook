@@ -50,19 +50,6 @@
       apt:
         autoremove: yes
 
-    # https://reference.apache.org/committer/node-hosting
-    - name: Create a jenkins group
-      group:
-        name: jenkins
-    - name: Create a jenkins user
-      user:
-        name: jenkins
-        group: jenkins
-    - name: Add in the jenkins ssh public key into the users ~/.ssh/authorized keys
-      authorized_key:
-        user: jenkins
-        key: https://raw.githubusercontent.com/apache/infrastructure-puppet/deployment/modules/build_slaves/files/jenkins.pub
-
     # https://gist.github.com/phillipuniverse/7721288
     - name: Install NTP
       apt:
@@ -78,17 +65,60 @@
       service: name=ntp state=started enabled=yes
       tags: ntp
 
+    # https://gist.github.com/rn/08d13b7ed30ab5fbde9a6dcaa24831ce
+    - name: Install some common tools
+      apt: name={{item}}
+      with_items:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+      tags: docker
+    - name: Add an Apt signing key, uses whichever key is at the URL
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      tags: docker
+    - name: "Add arm64 testing"
+      apt_repository:
+        repo: deb [arch=arm64] https://download.docker.com/linux/ubuntu xenial test
+        state: present
+      tags: docker
+    - name: Install docker
+      apt:
+        name: docker-ce
+        update_cache: yes
+      tags: docker
+
+    # https://reference.apache.org/committer/node-hosting
+    - name: Create a jenkins group
+      group:
+        name: jenkins
+    - name: Create a jenkins user
+      user:
+        name: jenkins
+        groups:
+          - jenkins
+          - docker
+    - name: Add in the jenkins ssh public key into the users ~/.ssh/authorized keys
+      authorized_key:
+        user: jenkins
+        key: https://raw.githubusercontent.com/apache/infrastructure-puppet/deployment/modules/build_slaves/files/jenkins.pub
+
     - name: Create a developers group
       group:
         name: dev
     - name: Create a user
       user:
         name: janisz
-        group: dev
+        groups:
+          - dev
+          - docker
     - name: Add public key for the user
       authorized_key:
         user: janisz
         key: https://github.com/janisz.keys
+
 
   handlers:
     - name: restart ntp
