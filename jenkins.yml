@@ -12,6 +12,37 @@
            - wget
            - git
            - htop
+    - name: Install the latest OpenJDK.
+      apt:
+        name: openjdk-8-jdk
+    - name: Create simlink to Java for Jenkins.
+      file:
+        path: /home/jenkins/tools/java/jdk1.8.0_131/bin/
+        state: directory
+    - name: Create simlink to Java for Jenkins.
+      file:
+        src: /usr/bin/java
+        dest: /home/jenkins/tools/java/jdk1.8.0_131/bin/java
+        state: link
+    - name: Install autotools (Only necessary if building from git repository).
+      apt: name={{item}}
+      with_items:
+           - autoconf
+           - libtool
+    - name: Install other Mesos dependencies.
+      apt: name={{item}}
+      with_items:
+          - build-essential
+          - python-dev
+          - python-six
+          - python-virtualenv
+          - libcurl4-nss-dev
+          - libsasl2-dev
+          - libsasl2-modules
+          - maven
+          - libapr1-dev
+          - libsvn-dev
+          - zlib1g-dev
     - name: Remove useless packages from the cache
       apt:
         autoclean: yes
