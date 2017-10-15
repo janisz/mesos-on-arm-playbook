@@ -62,3 +62,30 @@
       authorized_key:
         user: jenkins
         key: https://raw.githubusercontent.com/apache/infrastructure-puppet/deployment/modules/build_slaves/files/jenkins.pub
+
+    # https://gist.github.com/phillipuniverse/7721288
+    - name: Install NTP
+      apt:
+        name: ntp
+      tags: ntp
+    - name: Copy over the NTP configuration
+      template: src=etc/ntp.conf dest=/etc/ntp.conf
+      notify:
+        - restart ntp
+        - force ntp update
+      tags: ntp
+    - name: Make sure NTP is started up
+      service: name=ntp state=started enabled=yes
+      tags: ntp
+
+    - name: Create a developers group
+      group:
+        name: dev
+
+  handlers:
+    - name: restart ntp
+      service:
+        name: ntp
+        state: restarted
+    - name: force ntp update
+      shell: "service ntp stop && service ntp start"
