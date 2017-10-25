@@ -118,7 +118,16 @@
       authorized_key:
         user: janisz
         key: https://github.com/janisz.keys
-
+    - name: Create a user
+      user:
+        name: jieyu
+        groups:
+          - dev
+          - docker
+    - name: Add public key for the user
+      authorized_key:
+        user: jieyu
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/dsb0/YBtvi4JuAZ3pU/CnmVkD9hTfZWDch0r41KLHqIvH3oS/51JnE44i96p90WbG6yfY4dCYnNQjeXZskrlAmLx6HIUBNP60C1zplK8+3L1sNBSD32MI5p7oPtVvHv8PHA0GygckfVFSeZCcGn0xb5dRnmkyNeEiZ9AzwKCANhLsQ89N9B4F5zCM35DZ3Lve3JQDAPk2gMdaznlTiMvEWITNC/dtEdauiVqpUZ2umyd7D5rJx3E+UCXOxN/wq2noc8S4PuAef9rm+GUk878e4IAjePQYQhPH5bOvPAWI3UmgzjhSLM2zYHO1ob6Wz63H/Sw60R7ytrDkIIaI5Xl jyu@tw-mbp-jyu"
 
   handlers:
     - name: restart ntp
