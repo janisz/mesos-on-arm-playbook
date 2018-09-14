@@ -128,6 +128,16 @@
       authorized_key:
         user: jieyu
         key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/dsb0/YBtvi4JuAZ3pU/CnmVkD9hTfZWDch0r41KLHqIvH3oS/51JnE44i96p90WbG6yfY4dCYnNQjeXZskrlAmLx6HIUBNP60C1zplK8+3L1sNBSD32MI5p7oPtVvHv8PHA0GygckfVFSeZCcGn0xb5dRnmkyNeEiZ9AzwKCANhLsQ89N9B4F5zCM35DZ3Lve3JQDAPk2gMdaznlTiMvEWITNC/dtEdauiVqpUZ2umyd7D5rJx3E+UCXOxN/wq2noc8S4PuAef9rm+GUk878e4IAjePQYQhPH5bOvPAWI3UmgzjhSLM2zYHO1ob6Wz63H/Sw60R7ytrDkIIaI5Xl jyu@tw-mbp-jyu"
+    - name: Create a user
+      user:
+        name: bbannier
+        groups:
+          - dev
+          - docker
+    - name: Add public key for the user
+      authorized_key:
+        user: bbannier
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4gOVOclTZ6HWvSBFXo+SSIPle+h/nGPmBwpGOfOrw1ScaIRZuF2gJs3vjZWy03J5I8sTkz/bE2q21f1QJNMqrGM53GOKz7D0ZDnyXWuMDsDyrtWnahbsjFWOXLsWINSJx06PTW8kJaspqNIkTu8wxbRPKjCBDfLZiV1PGR8oebgdrKJBXasY/IeXuBuNOd8uDKBU/motNC8xQxwPj/Z5/03zIqA8V/j7pw5YL2/jinrgD6XJIsxs6gADgLcdkewJLJzv/ybFpZiam4l2DWRRjCRlYQIyEjyAqmUhfCqmHj9ZvougxULGVdI0ZEBh0Yk1Go/U45+B1jVnZE7FWEHCgw5XDN7NNc+r289EeLcJVHqkBL9kfTplaJt+zi/FOWEPh9BSzWkAfsR9//9+pB2agL+XwGs8GEbbl93GbNxHXLSmS300H03M8rnkfhz4Vi5EDaG8YYUzjDE79a0I8zMBdwTudYyIdc52exRw/kWOiV3diBX+vIeKECU+8ABeLJSrgDKLNBnZSHuB3ZH9mR4Kwihpah/xJHmwQ25Nuv/HQlrRFk1kF8hAY9YS3BYwf3A4w07evyAgGCRAKKJxcmsHNUYuDh0bwxn4f9g3T5rsXYpDVjfuvHuswNA4HL4Yh46HECOazH/njDtZ92oWkYFElJw74YlZU9nY/PyWwgdSdww== benjamin.bannier@mesosphere.io"
 
   handlers:
     - name: restart ntp
