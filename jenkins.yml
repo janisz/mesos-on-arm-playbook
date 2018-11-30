@@ -108,36 +108,46 @@
     - name: Create a developers group
       group:
         name: dev
-    - name: Create a user
+    - name: Create a user - janisz
       user:
         name: janisz
         groups:
           - dev
           - docker
-    - name: Add public key for the user
+    - name: Add public key for janisz
       authorized_key:
         user: janisz
         key: https://github.com/janisz.keys
-    - name: Create a user
+    - name: Create a user - jieyu
       user:
         name: jieyu
         groups:
           - dev
           - docker
-    - name: Add public key for the user
+    - name: Add public key for jieyu
       authorized_key:
         user: jieyu
         key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/dsb0/YBtvi4JuAZ3pU/CnmVkD9hTfZWDch0r41KLHqIvH3oS/51JnE44i96p90WbG6yfY4dCYnNQjeXZskrlAmLx6HIUBNP60C1zplK8+3L1sNBSD32MI5p7oPtVvHv8PHA0GygckfVFSeZCcGn0xb5dRnmkyNeEiZ9AzwKCANhLsQ89N9B4F5zCM35DZ3Lve3JQDAPk2gMdaznlTiMvEWITNC/dtEdauiVqpUZ2umyd7D5rJx3E+UCXOxN/wq2noc8S4PuAef9rm+GUk878e4IAjePQYQhPH5bOvPAWI3UmgzjhSLM2zYHO1ob6Wz63H/Sw60R7ytrDkIIaI5Xl jyu@tw-mbp-jyu"
-    - name: Create a user
+    - name: Create a user - bbannier
       user:
         name: bbannier
         groups:
           - dev
           - docker
-    - name: Add public key for the user
+    - name: Add public key for bbannier
       authorized_key:
         user: bbannier
         key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4gOVOclTZ6HWvSBFXo+SSIPle+h/nGPmBwpGOfOrw1ScaIRZuF2gJs3vjZWy03J5I8sTkz/bE2q21f1QJNMqrGM53GOKz7D0ZDnyXWuMDsDyrtWnahbsjFWOXLsWINSJx06PTW8kJaspqNIkTu8wxbRPKjCBDfLZiV1PGR8oebgdrKJBXasY/IeXuBuNOd8uDKBU/motNC8xQxwPj/Z5/03zIqA8V/j7pw5YL2/jinrgD6XJIsxs6gADgLcdkewJLJzv/ybFpZiam4l2DWRRjCRlYQIyEjyAqmUhfCqmHj9ZvougxULGVdI0ZEBh0Yk1Go/U45+B1jVnZE7FWEHCgw5XDN7NNc+r289EeLcJVHqkBL9kfTplaJt+zi/FOWEPh9BSzWkAfsR9//9+pB2agL+XwGs8GEbbl93GbNxHXLSmS300H03M8rnkfhz4Vi5EDaG8YYUzjDE79a0I8zMBdwTudYyIdc52exRw/kWOiV3diBX+vIeKECU+8ABeLJSrgDKLNBnZSHuB3ZH9mR4Kwihpah/xJHmwQ25Nuv/HQlrRFk1kF8hAY9YS3BYwf3A4w07evyAgGCRAKKJxcmsHNUYuDh0bwxn4f9g3T5rsXYpDVjfuvHuswNA4HL4Yh46HECOazH/njDtZ92oWkYFElJw74YlZU9nY/PyWwgdSdww== benjamin.bannier@mesosphere.io"
+    - name: Create a user - gmcdonald
+      user:
+        name: gmcdonald
+        groups:
+          - dev
+          - docker
+    - name: Add public key for gmcdonald
+      authorized_key:
+        user: gmcdonald
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC71HP9YspO1SDZ/5qNJNGE3MW27XiYc5gx2kaCJ2ZT3unZVRU60p3/fbMG5XwOzvmbN3Gzp2l2/8jKmngnQO0oHY9E2ZcVh14TblbgSErVPMM5zZBg40PvDRk61eECnGkXYfVKU5RzcDq5yYr4FFFFRh3pWjjBDBWtSczAXYavWPHOpNpQ1onudiCev/KHADXZS8J/HwhHmkVmxSWX+9upQlPlokXulZpMFqx6FPbBLk45Miq5xSYS3mN8dW3OupDHiKavKoLuzqom+7ndLhFUMX468htnhfUvTs9ajh7xBTfhziPJh+PkjeQLWNLdMQe0L8Ptd4IAxqSkegTCNit/LZbK/Jo6z7sBSdk2N+f8UIlK2do/9KlN30sFbVAK3nsIekxR+xQldEOMaCr83IM/b0G/mefxFrCdSm3z9SW84WKVt+DNADVKUMTm9ngOp2cjxPeXQuL5vTABaeSrzeMTAWagWTRQQVT/6XMNNJRbpHj+Fp8rd4sIRnqv86hYL1aoE1THuxqT451ZRYHJoCiZ3PQPMEhAzR5F6Voji6RkyJL8S662Ai/FesEeNyc2hcErfnfFCsKWckUOg8YOIR+DSfuJ6LtZZB/+SAE/QzKzIvMWuLCiGFR2oSiY7MqeJCm5CeF06YGddnQhGoqM6ZC6/hFkWAJ0Uzc5DRlxyFovaQ== gav_mac"
 
   handlers:
     - name: restart ntp
