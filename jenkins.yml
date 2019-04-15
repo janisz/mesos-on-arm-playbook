@@ -138,6 +138,16 @@
       authorized_key:
         user: bbannier
         key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4gOVOclTZ6HWvSBFXo+SSIPle+h/nGPmBwpGOfOrw1ScaIRZuF2gJs3vjZWy03J5I8sTkz/bE2q21f1QJNMqrGM53GOKz7D0ZDnyXWuMDsDyrtWnahbsjFWOXLsWINSJx06PTW8kJaspqNIkTu8wxbRPKjCBDfLZiV1PGR8oebgdrKJBXasY/IeXuBuNOd8uDKBU/motNC8xQxwPj/Z5/03zIqA8V/j7pw5YL2/jinrgD6XJIsxs6gADgLcdkewJLJzv/ybFpZiam4l2DWRRjCRlYQIyEjyAqmUhfCqmHj9ZvougxULGVdI0ZEBh0Yk1Go/U45+B1jVnZE7FWEHCgw5XDN7NNc+r289EeLcJVHqkBL9kfTplaJt+zi/FOWEPh9BSzWkAfsR9//9+pB2agL+XwGs8GEbbl93GbNxHXLSmS300H03M8rnkfhz4Vi5EDaG8YYUzjDE79a0I8zMBdwTudYyIdc52exRw/kWOiV3diBX+vIeKECU+8ABeLJSrgDKLNBnZSHuB3ZH9mR4Kwihpah/xJHmwQ25Nuv/HQlrRFk1kF8hAY9YS3BYwf3A4w07evyAgGCRAKKJxcmsHNUYuDh0bwxn4f9g3T5rsXYpDVjfuvHuswNA4HL4Yh46HECOazH/njDtZ92oWkYFElJw74YlZU9nY/PyWwgdSdww== benjamin.bannier@mesosphere.io"
+    - name: Create a user - abudnik
+      user:
+        name: abudnik
+        groups:
+          - dev
+          - docker
+    - name: Add public key for abudnik
+      authorized_key:
+        user: abudnik
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCXZwPOIQjGIMMxJSBodVnM+4uEn8PV9jpCxc5ksLjo2byfekybv98Tn4BbkZmoFpLQ6OiIBqmPbfIDfVBimC+9Kaku18Jn5W3FllvRiJ4sr0TmikdNPEmcPv0WiHv+RxSJuNXS00P2BEBlMallQ0Mlob4hEvd1fb72bm+B8KnxN18uH+S1FAFmrHcTcPSJDcgfiAGJD5c3JAsBSut6wJMPLlMBGDAPq8tLIPurJko2MQsVncnTgDUdHYcWWbD8k48tuDwAtwNMXy429oTw21CB8IOgjYy35Zir0sDAE7ldiT9wwWsZ/ogKihvfq3lLEvYGeZHYdB02cIH7vq7gB8af abudnik@Budniks-MacBook-Pro.local"
     - name: Create a user - gmcdonald
       user:
         name: gmcdonald
