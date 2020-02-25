@@ -6,8 +6,8 @@
       apt:
         update_cache: yes
     - name: Install a few utility tools.
-      apt: name={{item}}
-      with_items:
+      apt:
+        name:
            - tar
            - wget
            - git
@@ -24,14 +24,23 @@
         src: /usr/bin/java
         dest: /home/jenkins/tools/java/jdk1.8.0_131/bin/java
         state: link
+    - name: Create simlink to Java for Jenkins.
+      file:
+        path: /home/jenkins/tools/java/latest1.8/bin/
+        state: directory
+    - name: Create simlink to Java for Jenkins.
+      file:
+        src: /usr/bin/java
+        dest: /home/jenkins/tools/java/latest1.8/bin/java
+        state: link
     - name: Install autotools (Only necessary if building from git repository).
-      apt: name={{item}}
-      with_items:
+      apt:
+        name:
            - autoconf
            - libtool
     - name: Install other Mesos dependencies.
-      apt: name={{item}}
-      with_items:
+      apt:
+        name:
           - build-essential
           - python-dev
           - python-six
@@ -67,8 +76,8 @@
 
     # https://gist.github.com/rn/08d13b7ed30ab5fbde9a6dcaa24831ce
     - name: Install some common tools
-      apt: name={{item}}
-      with_items:
+      apt:
+        name:
           - apt-transport-https
           - ca-certificates
           - curl
