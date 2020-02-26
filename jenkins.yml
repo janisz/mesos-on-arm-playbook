@@ -27,6 +27,7 @@
     - name: Create simlink to Java for Jenkins.
       file:
         path: /home/jenkins/tools/java/latest1.8/bin/
+        owner: jenkins
         state: directory
     - name: Create simlink to Java for Jenkins.
       file:
