@@ -19,6 +19,7 @@
       file:
         path: /home/jenkins/tools/java/jdk1.8.0_131/bin/
         state: directory
+        owner: jenkins
     - name: Create simlink to Java for Jenkins.
       file:
         src: /usr/bin/java
@@ -114,6 +115,13 @@
       authorized_key:
         user: jenkins
         key: https://raw.githubusercontent.com/apache/infrastructure-puppet/deployment/modules/build_slaves/files/jenkins.pub
+    - name: Change owner for jenkins homedir
+      file:
+        path: /home/jenkins/
+        owner: jenkins
+        group: jenkins
+        state: directory
+        recurse: yes
 
     - name: Create a developers group
       group:
