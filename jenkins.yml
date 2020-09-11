@@ -8,6 +8,7 @@
     - name: Install a few utility tools.
       apt:
         name:
+           - time
            - tar
            - wget
            - git
